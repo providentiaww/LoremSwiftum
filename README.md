@@ -1,37 +1,127 @@
 # LoremSwiftum
 
-[![](https://img.shields.io/github/release/lukaskubanek/LoremSwiftum.svg?style=flat-square)](https://github.com/lukaskubanek/LoremSwiftum/releases) [![](https://img.shields.io/badge/Swift-2.3-orange.svg?style=flat-square)](https://developer.apple.com/swift/) ![](https://img.shields.io/badge/platform-macOS/iOS-yellowgreen.svg?style=flat-square) [![](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat-square "Carthage compatible")](https://github.com/Carthage/Carthage) [![](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat-square "License")](LICENSE.md)
+[![](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat-square)](https://developer.apple.com/swift/)  [![](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat-square "License")](LICENSE.md)
 
-**LoremSwiftum** is a lightweight lorem ipsum generator for iOS and OS X written in Swift. It supports generating texts in different formats (words, sentences, paragraphs) and miscellaneous data (names, URLs, dates etc.). This framework is a reimplementation of the library [LoremIpsum](https://github.com/lukaskubanek/LoremIpsum) written in Objective-C.
+**LoremSwiftum** is a lightweight lorem ipsum generator for Server Side Swift. It supports generating texts in different formats (words, sentences, paragraphs) and miscellaneous data (names, URLs etc.). This framework is a reimplementation of the library [LoremIpsum](https://github.com/lukaskubanek/LoremIpsum) written in Objective-C.
+
+Note the original Swift 2.3 iOS/OS X port is located here: [lukaskubanek/LoremSwiftum](https://github.com/lukaskubanek/LoremSwiftum)
 
 ## Requirements
 
-- Swift 2.3
-- Xcode 8
-- iOS 8.0+ / OS X 10.10+
+- Swift 3.0+
 
-## Installation
+## Installation via Swift Package Manager
 
-### Carthage
+Add the following to your Package.swift file:
 
-The easiest way to integrate this framework in your project is to use [Carthage](https://github.com/Carthage/Carthage/).
+``` swift
+.Package(
+    url: "https://github.com/iamjono/LoremSwiftum.git", 
+    majorVersion: 1, minor: 0
+    ),
+```
 
-1. Add `github "lukaskubanek/LoremSwiftum"` to your `Cartfile`.
-2. Run `carthage bootstrap`.
-3. Drag either the `LoremSwiftum.xcodeproj` or the `LoremSwiftum.framework` into your project/workspace and link your target against the `LoremSwiftum.framework`.
-4. Make sure the framework [gets copied](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) to your application bundle.
+Then, regenerate your Xcode project:
 
-### Submodules
-
-Another option for integrating this framework is to use [Git submodules](http://git-scm.com/book/en/v2/Git-Tools-Submodules).
+```
+swift package generate-xcodeproj
+```
 
 ## Usage
 
-For the overview of the API provided by this library see the playground file [Examples.playground](Examples/LoremSwiftum.playground/Contents.swift).
+To use in a project file, import the package:
+
+``` swift
+import LoremSwiftum 
+```
+
+### Methods
+
+Generate a single sentence of Lorem Ipsum of between 4 and 16 words:
+
+``` swift
+var str = Lorem.sentence
+```
+
+Generate "n" sentences of Lorem Ipsum of between 4 and 16 words:
+
+``` swift
+var str = Lorem.sentences(count: Int)
+```
+
+Generate a single paragraph of Lorem Ipsum of between 3 and 9 sentences:
+
+``` swift
+var str = Lorem.paragraph
+```
+
+
+Generate "n" paragraphs of Lorem Ipsum of between 3 and 9 sentences:
+
+``` swift
+var str = Lorem.paragraphs(count: Int)
+```
+
+Generate a title of between 2 and 7 words:
+
+``` swift
+var str = Lorem.title
+```
+
+Generate a random single word from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.word
+```
+
+Generate "n" words from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.words(count: Int)
+```
+
+Generate a random single email from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.email
+```
+
+Generate a random single first name from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.firstname
+```
+
+Generate a random single last name from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.lastname
+```
+
+Generate a random single name (first and last) from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.name
+```
+
+Generate a random single tweet from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.tweet
+```
+
+Generate a random single url from the Lorem Ipsum "dictionary":
+
+``` swift
+var str = Lorem.URL
+```
+
 
 ## Author
 
 Lukas Kubanek // [lukaskubanek.com](http://lukaskubanek.com) // [@kubanekl](https://twitter.com/kubanekl)
+
+Jonathan Guthrie // [https://github.com/iamjono](https://github.com/iamjono) [@iamjono](https://twitter.com/iamjono) - Swift 3 port & SPM integration.
 
 ## License
 
