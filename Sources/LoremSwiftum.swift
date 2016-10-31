@@ -158,7 +158,7 @@ public extension String {
     
     public var stringWithCapitalizedFirstLetter: String {
 		let source = clean(with: " ", allOf: "-", "_")
-		let first = source[self.startIndex...self.index(after: startIndex)].lowercased()
+		let first = source[self.startIndex...self.index(after: startIndex)].lowercased().capitalize()
 		let rest = String(source.characters.dropFirst())
 		return "\(first)\(rest)"
     }
